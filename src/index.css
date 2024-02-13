@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.box {
+  @apply flex justify-center items-center w-full h-screen
+}
+
+.box-container {
+  @apply w-1/3 h-[500px] mt-20 bg-black border-2 border-red-600 rounded-lg
+}
+
+.col-container{
+  @apply flex flex-col justify-center items-center w-full h-full
+}
+
+.input-container {
+  @apply flex flex-col justify-center items-center w-1/2
+}
+
+.title {
+  @apply m-5 text-red-500 font-poppins text-2xl
+}
+
+.input-style {
+  @apply p-2 rounded-[5px] border-b-2 border-b-red-600
+  ring-0 overflow-hidden outline-none font-serif
+  text-yellow-400 placeholder-yellow-400
+}
+.selector {
+  @apply input-style bg-black
+}
+
+.registration{
+  @apply flex flex-col justify-center w-full p-1
+}
+
+.registration-input {
+  @apply input-style bg-transparent
+}
+
+.button {
+  @apply flex justify-center items-center w-full m-4
+  bg-red-900 p-2 font-bold text-yellow-400 rounded-lg
+  hover:bg-yellow-400 hover:text-red-950
+}
+
+.privacy-policy-box {
+  @apply p-6 rounded-lg
+}
+
+.policy-title {
+  @apply flex justify-center items-center text-xl font-semibold mt-32 text-yellow-400
+}
+
+.policy-header {
+  @apply text-xl font-semibold mb-2 text-yellow-400
+}
+
+.password-icon {
+  @apply absolute top-5 right-2 cursor-pointer text-yellow-400
+}
+
+.nav-links {
+  @apply text-red-500 hover:text-yellow-400
+}
+
+.header {
+  @apply font-bold text-red-600 flex justify-center
+}
+.header-2 {
+  @apply header mt-4
+}
+
+.icons {
+  @apply border-2 px-2 py-1 bg-black border-red-600 hover:text-yellow-400
+}
+
+.table-header {
+  @apply border border-gray-700 text-white p-1 text-[19px] font-body
+}
