@@ -35,7 +35,7 @@ export const Provider = ({children}) => {
         return new Date(dateString).toLocaleString('en-US', options);
     }
 
-    const serverUrl = 'http://localhost:5000';
+    const serverUrl = 'https://registration-server-2pfl.onrender.com';
 
     const get = {
         password, confirmPassword, setPassword, setConfirmPassword,
