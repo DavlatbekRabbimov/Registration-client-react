@@ -1,22 +1,25 @@
 import React, {useEffect} from 'react';
 import {useProvider} from "../../provider/provider.jsx";
+import axios from "axios";
 export const Position = () => {
 
-    const {position, setPosition, positions, setPositions} = useProvider().get;
+    const {position, setPosition, positions, setPositions, serverUrl} = useProvider().get;
 
     React.useLayoutEffect(() => {
         setPosition('');
     }, [location.pathname]);
 
     useEffect(() => {
-        fetch('positions-list.json')
-            .then(response => response.json())
-            .then(data => {
-                Array.isArray(data.positions)
-                    ? setPositions(data.positions)
-                    : console.error('data.positions is not an array');
-            });
-    }, []);
+        const data = async () => {
+            try {
+                const res = await axios.get(`${serverUrl}/positions`);
+                setPositions(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        data();
+    }, [positions]);
 
     return (
         <div className={`registration`}>
