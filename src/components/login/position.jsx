@@ -9,7 +9,7 @@ export const Position = () => {
     }, [location.pathname]);
 
     useEffect(() => {
-        fetch('src/positions/positions-list.json')
+        fetch('positions-list.json')
             .then(response => response.json())
             .then(data => {
                 Array.isArray(data.positions)
