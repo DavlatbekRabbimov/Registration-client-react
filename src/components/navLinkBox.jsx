@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useEffect} from 'react';
+=======
+import React, {useEffect, useState} from 'react';
+>>>>>>> c8f99f312a02c889f7ba7458ed4e4c05af1086c6
 import {NavLink, useNavigate} from "react-router-dom";
 import logo from '../assets/logo.png';
 import {useProvider} from "../provider/provider.jsx";

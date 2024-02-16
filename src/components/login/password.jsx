@@ -1,6 +1,10 @@
 import React, {useEffect} from 'react';
 import {RiEyeFill} from "react-icons/ri";
 import {PiEyeClosedBold} from "react-icons/pi";
+<<<<<<< HEAD
+=======
+import {useProvider} from "../../provider/provider.jsx";
+>>>>>>> c8f99f312a02c889f7ba7458ed4e4c05af1086c6
 
 export const Password = ({name, value, setValue, show, setShow}) => {
 

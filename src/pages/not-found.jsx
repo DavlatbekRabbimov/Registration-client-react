@@ -1,5 +1,8 @@
 import React from "react";
+<<<<<<< HEAD
 
+=======
+>>>>>>> c8f99f312a02c889f7ba7458ed4e4c05af1086c6
 export const NotFoundPage = () => {
     return (
         <div className={`flex justify-center items-center w-full h-screen`}>
