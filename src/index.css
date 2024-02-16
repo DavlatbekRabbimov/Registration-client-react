@@ -23,8 +23,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.flex-center {
+  @apply flex justify-center items-center
+}
+
 .box {
-  @apply flex justify-center items-center w-full h-screen
+  @apply flex-center w-full h-screen
 }
 
 .box-container {
@@ -32,11 +36,11 @@
 }
 
 .col-container{
-  @apply flex flex-col justify-center items-center w-full h-full
+  @apply flex-center flex-col w-full h-full
 }
 
 .input-container {
-  @apply flex flex-col justify-center items-center w-1/2
+  @apply flex-center flex-col w-1/2
 }
 
 .title {
@@ -61,7 +65,7 @@
 }
 
 .button {
-  @apply flex justify-center items-center w-full m-4
+  @apply flex-center w-full m-4
   bg-red-900 p-2 font-bold text-yellow-400 rounded-lg
   hover:bg-yellow-400 hover:text-red-950
 }
@@ -71,32 +75,84 @@
 }
 
 .policy-title {
-  @apply flex justify-center items-center text-xl font-semibold mt-32 text-yellow-400
+  @apply flex-center text-xl font-semibold mt-32 text-yellow-400
 }
 
 .policy-header {
   @apply text-xl font-semibold mb-2 text-yellow-400
 }
 
-.password-icon {
-  @apply absolute top-5 right-2 cursor-pointer text-yellow-400
-}
-
 .nav-links {
   @apply text-red-500 hover:text-yellow-400
 }
 
-.header {
-  @apply font-bold text-red-600 flex justify-center
+
+.password-icon {
+  @apply absolute top-5 right-2 cursor-pointer text-yellow-400
 }
-.header-2 {
-  @apply header mt-4
+
+
+.first-level-box {
+  @apply flex flex-col justify-center
+}
+
+.second-level-box{
+  @apply flex flex-col justify-center items-center w-full mt-24
+}
+
+.table-box {
+  @apply flex flex-col justify-center w-[850px] min-h-[500px] bg-black
+}
+
+.icon-container {
+  @apply flex flex-row space-x-12 text-[35px] bg-red-950 p-4
 }
 
 .icons {
   @apply border-2 px-2 py-1 bg-black border-red-600 hover:text-yellow-400
 }
 
-.table-header {
-  @apply border border-gray-700 text-white p-1 text-[19px] font-body
+.table-container {
+  @apply flex justify-center w-full bg-black border-2 border-red-600
+  min-h-[450px]
 }
+
+.table {
+  @apply table-fixed w-full justify-center outline-none ring-0
+}
+
+.table-header-checkbox {
+  @apply w-[100px] h-[50px] sticky top-0
+}
+
+.table-header {
+  @apply w-[150px] h-[50px] border border-gray-700 text-white p-1 text-[17px] font-body
+  sticky top-0
+}
+
+.table-body {
+  @apply min-h-[50px] max-h-[200px] overflow-y-scroll
+}
+
+.table-row {
+  @apply border-b border-gray-700 text-center text-white hover:bg-gray-700
+}
+
+.table-body-header-checkbox {
+  @apply border border-gray-700 text-white p-1 text-[19px] font-body sticky top-0
+}
+.header {
+  @apply font-bold text-red-600 flex justify-center text-[18px]
+}
+.header-2 {
+  @apply header mt-4
+}
+
+.pagination-box {
+  @apply flex flex-row justify-between items-center px-6 text-[16px] bg-red-950 border-b-2 border-b-black
+}
+
+
+
+
+

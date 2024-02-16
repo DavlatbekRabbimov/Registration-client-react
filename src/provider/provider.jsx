@@ -3,6 +3,8 @@ import React, {createContext, useContext, useState} from "react";
 const Context = createContext();
 export const Provider = ({children}) => {
 
+    const serverUrl = 'http://localhost:5001';
+
     const [username, setUsername] = useState("");
     const [position, setPosition] = useState("");
     const [positions, setPositions] = useState([]);
@@ -16,11 +18,16 @@ export const Provider = ({children}) => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
+    const [authUser, setAuthUser] = useState('');
+
+    //format-input-value
     const handleChangeValue = (e, setValue, regex) => {
         let value = e.target.value;
         if (value !== "") value = value.replace(regex, "");
         setValue(value);
     }
+
+    //format-date-time
     const formatDate = (dateString) => {
         const options = {
             year: 'numeric',
@@ -31,19 +38,25 @@ export const Provider = ({children}) => {
             second: '2-digit',
             hour12: false
         };
-
         return new Date(dateString).toLocaleString('en-US', options);
     }
 
-    const serverUrl = 'https://registration-server-2pfl.onrender.com';
+    //pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const [rowsPerPage] = useState(5);
+    const indexOfLastRow = currentPage * rowsPerPage;
+    const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+    const currentRows = data.slice(indexOfFirstRow, indexOfLastRow);
 
+    //complex
     const get = {
         password, confirmPassword, setPassword, setConfirmPassword,
         isShowPassword, isShowConfirmPassword, setIsShowPassword, setIsShowConfirmPassword,
         username, setUsername, position, setPosition, positions, setPositions, serverUrl,
         email, setEmail, checked, setChecked, isUserPage, setIsUserPage, loading, setLoading,
-        data, setData, selectedUsers, setSelectedUsers,
-        handleChangeValue, formatDate
+        data, setData, selectedUsers, setSelectedUsers, authUser, setAuthUser, currentPage, setCurrentPage,
+        rowsPerPage, currentRows, handleChangeValue, formatDate
+
     }
 
     return (

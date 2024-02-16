@@ -14,7 +14,7 @@ export const Email = () => {
             <input className={`registration-input`}
                    type={`email`}
                    value={email}
-                   onChange={(e) => handleChangeValue(e, setEmail, /[а-яА-Я!#$%&*+=]/g)}
+                   onChange={(e) => handleChangeValue(e, setEmail, /[а-яА-Я!#$%&*+=\s]/g)}
                    placeholder={`E-mail`}
                    required
             />

@@ -5,9 +5,8 @@ import {useProvider} from "../provider/provider.jsx";
 
 export const NavLinkBox = () => {
 
-    const {isUserPage, setIsUserPage} = useProvider().get;
+    const {isUserPage, setIsUserPage, authUser, setAuthUser} = useProvider().get;
     const navigate = useNavigate();
-    const [authUser, setAuthUser] = useState('');
 
     useEffect(() => {
         const storedUsername = localStorage.getItem('username');
@@ -18,10 +17,10 @@ export const NavLinkBox = () => {
         e.preventDefault();
         localStorage.removeItem('token');
         localStorage.removeItem('username');
+        setAuthUser('');
         setIsUserPage(false);
         navigate("/");
     }
-
 
     return (
         <div className="absolute flex justify-between w-full p-6 bg-black

@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react';
 import {TbLockCancel, TbLockOpen} from "react-icons/tb";
 import {MdDelete} from "react-icons/md";
-import {Table, TableBody, TableBodyRow, TableData, TableHead, TableHeader,
-    TableHeaderCheckbox, TableHeaderDouble, TableHeadRow,
-} from "../table-style.jsx";
 import axios from "axios";
 import {useProvider} from "../provider/provider.jsx";
+import React, {useEffect} from "react";
+import {Pagination} from "../components/pagination.jsx";
 
 export const User = () => {
 
-    const {formatDate, data, setData, selectedUsers, setSelectedUsers, serverUrl} = useProvider().get;
+    const {
+        formatDate, data, setData, selectedUsers, setSelectedUsers,
+        serverUrl, currentRows
+    } = useProvider().get;
 
     useEffect(() => {
         fetch(`${serverUrl}/table`)
@@ -23,10 +24,7 @@ export const User = () => {
             for (let i = 0; i < selectedUsers.length; i++) {
                 if (selectedUsers[i]) {
                     const userId = data[i].id;
-                    await axios.post(url, {
-                        userId,
-                        status
-                    });
+                    await axios.post(url, {userId, status});
                 }
             }
             const response = await axios.get(`${serverUrl}/table`);
@@ -51,47 +49,65 @@ export const User = () => {
         setSelectedUsers(newSelectedUsers);
     };
 
-    return (<div className={`flex justify-center w-full h-screen`}>
-        <div className={`absolute flex flex-row top-[140px] left-[350px] space-x-12 text-[35px]`}>
-            <div className={`icons`} onClick={clickBlocked}><TbLockCancel/></div>
-            <div className={`icons`}><TbLockOpen onClick={clickUnblock}/></div>
-            <div className={`icons`}><MdDelete onClick={clickDelete}/></div>
-        </div>
-        <div className="box">
-            <div className="flex justify-center w-[850px] h-[500px] mt-40 bg-black border-2
-            border-red-600 rounded-lg">
-                <Table>
-                    <TableHead>
-                        <TableHeadRow>
-                            <TableHeaderCheckbox>
-                                <input className={`w-6 h-6 mt-6`}
-                                       type="checkbox"
-                                       onChange={handleSelectAll}/>
-                            </TableHeaderCheckbox>
-                            <TableHeaderDouble nameOne={`Name`} nameTwo={`Position`}/>
-                            <TableHeader name={`Email`}/>
-                            <TableHeader name={`Last login`}/>
-                            <TableHeader name={`Status`}/>
-                        </TableHeadRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.map((items, index) => {
-                            return (<TableBodyRow key={index}>
-                                <TableHeaderCheckbox>
-                                    <input className={`w-4 h-4`}
-                                           type="checkbox"
-                                           checked={selectedUsers[index]}
-                                           onChange={() => handleUserSelect(index)}/>
-                                </TableHeaderCheckbox>
-                                <TableData>{items.username}<br/>{items.position}</TableData>
-                                <TableData>{items.email}</TableData>
-                                <TableData>{formatDate(items.lastLogin)}</TableData>
-                                <TableData>{items.status}</TableData>
-                            </TableBodyRow>)
-                        })}
-                    </TableBody>
-                </Table>
+    return (
+        <div className={`box`}>
+            <div className={`first-level-box`}>
+                <div className={`second-level-box`}>
+                    <div className={`table-box`}>
+                        <div className={`icon-container`}>
+                            <div className={`icons`}
+                                 onClick={clickBlocked}><TbLockCancel/></div>
+                            <div className={`icons`}
+                                 onClick={clickUnblock}><TbLockOpen/></div>
+                            <div className={`icons`}
+                                 onClick={clickDelete}><MdDelete/></div>
+                        </div>
+                        <div className={`table-container`}>
+                            <table className={`table`}>
+                                <thead>
+                                <tr className={`bg-slate-900`}>
+                                    <th className={`table-header-checkbox`}>
+                                        <input className={`w-6 h-6 mt-4`}
+                                               type="checkbox"
+                                               onChange={handleSelectAll}/>
+                                    </th>
+                                    <th className={`table-header`}>Name<br/>Position</th>
+                                    <th className={`table-header`}>Email</th>
+                                    <th className={`table-header`}>Last login</th>
+                                    <th className={`table-header`}>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody className={`table-body`}>
+                                {currentRows.length > 0 ? (
+                                    currentRows.map((items, index) => {
+                                        return (
+                                            <tr className={`table-row`}
+                                                key={index}>
+                                                <th className={`table-body-header-checkbox`}>
+                                                    <input className={`w-4 h-4`}
+                                                           type="checkbox"
+                                                           checked={selectedUsers[index]}
+                                                           onChange={() => handleUserSelect(index)}/>
+                                                </th>
+                                                <td>{items.username}<br/>{items.position}</td>
+                                                <td>{items.email}</td>
+                                                <td>{formatDate(items.lastLogin)}</td>
+                                                <td>{items.status}</td>
+                                            </tr>)
+                                    })
+                                ) : (
+                                    <tr className={`table-row`}>
+                                        <td colSpan={5} className={`p-1`}>Not data</td>
+                                    </tr>
+                                )}
+                                </tbody>
+                            </table>
+                        </div>
+                        <Pagination/>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </div>);
+        </div>);
 };
+

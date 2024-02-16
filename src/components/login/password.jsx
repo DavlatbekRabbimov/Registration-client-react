@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import {RiEyeFill} from "react-icons/ri";
 import {PiEyeClosedBold} from "react-icons/pi";
+import {useProvider} from "../../provider/provider.jsx";
 
 export const Password = ({name, value, setValue, show, setShow}) => {
 
     useEffect(() => {
-        setValue("");
+        setValue('');
         setShow(false);
     }, []);
 
@@ -15,7 +16,7 @@ export const Password = ({name, value, setValue, show, setShow}) => {
                    type={show ? "text" : "password"}
                    placeholder={`${name}`}
                    value={value}
-                   onChange={(e) => setValue(e.target.value)}
+                   onChange={(e) => setValue(e.target.value.replace(/[\s]+/g, ''))}
                    required
             />
             <div className={`password-icon`}

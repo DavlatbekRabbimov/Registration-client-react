@@ -11,7 +11,7 @@ import {Title} from "../tools/title.jsx";
 export const SignIn = () => {
 
     const {password, setPassword, isShowPassword, setIsShowPassword,
-        serverUrl, email, setIsUserPage} = useProvider().get;
+        serverUrl, email, setIsUserPage, setAuthUser} = useProvider().get;
     const data = {password, email};
     const navigate = useNavigate();
     const clickSignUp = () => {
@@ -26,7 +26,8 @@ export const SignIn = () => {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.username);
             setIsUserPage(true);
-            window.location.href = '/users';
+            setAuthUser(response.data.username);
+            navigate('/users');
         } catch (error) {
             ErrorMsg(error.response.data.message);
             console.error(error.response.data.message);
