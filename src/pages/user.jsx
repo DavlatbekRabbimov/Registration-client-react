@@ -10,7 +10,7 @@ export const User = () => {
     const {
         formatDate, data, setData, selectedUsers, setSelectedUsers,
         serverUrl, currentRows
-    } = useProvider().get;
+    } = useProvider.get;
 
     useEffect(() => {
         fetch(`${serverUrl}/table`)
