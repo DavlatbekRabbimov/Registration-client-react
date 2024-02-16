@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.flex-center {
+  @apply flex justify-center items-center
+}
+
+.box {
+  @apply flex-center w-full h-screen
+}
+
+.box-container {
+  @apply w-1/3 h-[500px] mt-20 bg-black border-2 border-red-600 rounded-lg
+}
+
+.col-container{
+  @apply flex-center flex-col w-full h-full
+}
+
+.input-container {
+  @apply flex-center flex-col w-1/2
+}
+
+.title {
+  @apply m-5 text-red-500 font-poppins text-2xl
+}
+
+.input-style {
+  @apply p-2 rounded-[5px] border-b-2 border-b-red-600
+  ring-0 overflow-hidden outline-none font-serif
+  text-yellow-400 placeholder-yellow-400
+}
+.selector {
+  @apply input-style bg-black
+}
+
+.registration{
+  @apply flex flex-col justify-center w-full p-1
+}
+
+.registration-input {
+  @apply input-style bg-transparent
+}
+
+.button {
+  @apply flex-center w-full m-4
+  bg-red-900 p-2 font-bold text-yellow-400 rounded-lg
+  hover:bg-yellow-400 hover:text-red-950
+}
+
+.privacy-policy-box {
+  @apply p-6 rounded-lg
+}
+
+.policy-title {
+  @apply flex-center text-xl font-semibold mt-32 text-yellow-400
+}
+
+.policy-header {
+  @apply text-xl font-semibold mb-2 text-yellow-400
+}
+
+.nav-links {
+  @apply text-red-500 hover:text-yellow-400
+}
+
+
+.password-icon {
+  @apply absolute top-5 right-2 cursor-pointer text-yellow-400
+}
+
+
+.first-level-box {
+  @apply flex flex-col justify-center
+}
+
+.second-level-box{
+  @apply flex flex-col justify-center items-center w-full mt-24
+}
+
+.table-box {
+  @apply flex flex-col justify-center w-[850px] min-h-[500px] bg-black
+}
+
+.icon-container {
+  @apply flex flex-row space-x-12 text-[35px] bg-red-950 p-4
+}
+
+.icons {
+  @apply border-2 px-2 py-1 bg-black border-red-600 hover:text-yellow-400
+}
+
+.table-container {
+  @apply flex justify-center w-full bg-black border-2 border-red-600
+  min-h-[450px]
+}
+
+.table {
+  @apply table-fixed w-full justify-center outline-none ring-0
+}
+
+.table-header-checkbox {
+  @apply w-[100px] h-[50px] sticky top-0
+}
+
+.table-header {
+  @apply w-[150px] h-[50px] border border-gray-700 text-white p-1 text-[17px] font-body
+  sticky top-0
+}
+
+.table-body {
+  @apply min-h-[50px] max-h-[200px] overflow-y-scroll
+}
+
+.table-row {
+  @apply border-b border-gray-700 text-center text-white hover:bg-gray-700
+}
+
+.table-body-header-checkbox {
+  @apply border border-gray-700 text-white p-1 text-[19px] font-body sticky top-0
+}
+.header {
+  @apply font-bold text-red-600 flex justify-center text-[18px]
+}
+.header-2 {
+  @apply header mt-4
+}
+
+.pagination-box {
+  @apply flex flex-row justify-between items-center px-6 text-[16px] bg-red-950 border-b-2 border-b-black
+}
